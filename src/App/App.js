@@ -7,7 +7,7 @@ import NoteListMain from '../NoteListMain/NoteListMain'
 import NotePageMain from '../NotePageMain/NotePageMain'
 import AddFolder from '../AddFolder/AddFolder'
 import AddNote from '../AddNote/AddNote'
-import dummyStore from '../dummy-store'
+//import dummyStore from '../dummy-store'
 import { getNotesForFolder, findNote, findFolder } from '../notes-helpers'
 import './App.css'
 
@@ -18,8 +18,20 @@ class App extends Component {
   };
 
   componentDidMount() {
+    fetch('http://localhost:8000/api/folders')
+    .then(response => response.json())
+    .then(json=> {
+      this.setState({folders: json})
+    });
+    fetch('http://localhost:8000/api/notes')
+    .then(response=> response.json())
+    .then(json => {
+      this.setState({notes: json})
+    })
+    //this is where I should start when I get back 
+    //I should try to set state from notes and folders API
     // fake date loading from API call
-    setTimeout(() => this.setState(dummyStore), 600)
+    //setTimeout(() => this.setState(dummyStore), 600)
   }
 
   renderNavRoutes() {
