@@ -28,10 +28,6 @@ class App extends Component {
     .then(json => {
       this.setState({notes: json})
     })
-    //this is where I should start when I get back 
-    //I should try to set state from notes and folders API
-    // fake date loading from API call
-    //setTimeout(() => this.setState(dummyStore), 600)
   }
 
   renderNavRoutes() {
